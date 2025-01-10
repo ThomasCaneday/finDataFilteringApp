@@ -5,7 +5,8 @@ import { useEffect } from 'react'
 
 // Get free API key from https://site.financialmodelingprep.com/developer/docs#income-statements-financial-statements
 // Enter free API key below (keys change every day)
-const API = 'https://financialmodelingprep.com/api/v3/income-statement/AAPL?period=annual&apikey=wkGNeZgcRrxrE8ynkJhsMatZTB4auhom'
+const apiKey = import.meta.env.VITE_API_KEY;
+const API = apiKey;
 
 function App() {
   // Raw data and filtered data
