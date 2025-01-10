@@ -1,8 +1,38 @@
-# React + Vite
+# Financial Data Filtering App Submission
+## Author: Thomas Caneday
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## How to Run this Project Locally:
 
-Currently, two official plugins are available:
+### Ensure node, npm, and git are installed
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To check, run:
+node --version
+npm --version
+git --version
+
+### Clone the Repo
+
+Clone this project by entering this into your terminal:
+git clone https://github.com/ThomasCaneday/finDataFilteringApp.git
+
+### Navigate to Project Directory
+
+Change into directory by typing:
+cd finDataFilteringApp
+
+### Install Dependencies
+
+Install npm dependencies by typing:
+npm install
+
+### Run on Local Development Server
+
+You can run the project by entering:
+npm run dev
+
+### Viewing the Local Project
+
+View the newly run project by clicking on the provided localhost website URL. If clicking does not work, copy and paste the URL into your browser.
+
+## URL Link to my Hosted Web App
+URL Link: [https://thomascaneday.github.io/finDataFilteringApp/]
