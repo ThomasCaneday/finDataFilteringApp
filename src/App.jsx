@@ -182,7 +182,7 @@ function App() {
           </div>
           <div>
           <label className='block text-md font-medium mb-1'>
-            Start Date:
+            End Date:
             <input
               className='bg-gray-200 border border-gray-300 p-2 rounded w-full'
               type="date"
