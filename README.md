@@ -36,3 +36,7 @@ View the newly run project by clicking on the provided localhost website URL. If
 
 ## URL Link to my Hosted Web App
 URL Link: [https://thomascaneday.github.io/finDataFilteringApp/]
+
+
+### Notes:
+If data is not displaying correctly, you may need to update the free API key in App.jsx
