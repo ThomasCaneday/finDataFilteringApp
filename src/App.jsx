@@ -45,45 +45,58 @@ function App() {
   // Filter Functions (Date, Revenue, Net Income)
   const filterDate = (filtered) => {
     if (!startDate || !endDate) {
-      alert("Please enter both a start date and an end date.")
-      return
+      alert("Please enter both a start date and an end date.");
+      return;
     }
-
-    filtered = filtered.filter(item => {
-      const itemDate = new Date(item.date)
-      return itemDate >= new Date(startDate) && itemDate <= new Date(endDate)
-    })
-    
-    setFilteredInfo(filtered)
-  }
+  
+    // Parse the start and end dates
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+  
+    const newFiltered = filtered.filter(item => {
+      const itemDate = new Date(item.date);
+      return itemDate >= start && itemDate <= end;
+    });
+  
+    setFilteredInfo(newFiltered);
+  };
+  
 
   const filterRev = (filtered) => {
     if (!minRev && !maxRev) {
-      alert("Please enter either a minimum revenue or a maximum revenue.")
-      return
+      alert("Please enter either a minimum revenue or a maximum revenue.");
+      return;
     }
-
-    filtered = filtered.filter(item => {
-      const itemRevenue = parseInt(item.revenue, 10)
-      return itemRevenue >= parseInt(minRev, 10) && itemRevenue <= parseInt(maxRev, 10)
-    })
-
-    setFilteredInfo(filtered)
-  }
+  
+    const min = minRev ? parseInt(minRev, 10) : Number.NEGATIVE_INFINITY;
+    const max = maxRev ? parseInt(maxRev, 10) : Number.POSITIVE_INFINITY;
+  
+    const newFiltered = filtered.filter(item => {
+      const itemRevenue = parseInt(item.revenue, 10);
+      return itemRevenue >= min && itemRevenue <= max;
+    });
+  
+    setFilteredInfo(newFiltered);
+  };
+  
 
   const filterNetIncome = (filtered) => {
     if (!minNetIncome && !maxNetIncome) {
-      alert("Please enter either a minimum net income or a maximum net income.")
-      return
+      alert("Please enter either a minimum net income or a maximum net income.");
+      return;
     }
-
-    filtered = filtered.filter(item => {
-      const itemNetIncome = parseInt(item.netIncome, 10)
-      return itemNetIncome >= parseInt(minNetIncome, 10) && itemNetIncome <= parseInt(maxNetIncome, 10)
-    })
-
-    setFilteredInfo(filtered)
-  }
+  
+    const min = minNetIncome ? parseInt(minNetIncome, 10) : Number.NEGATIVE_INFINITY;
+    const max = maxNetIncome ? parseInt(maxNetIncome, 10) : Number.POSITIVE_INFINITY;
+  
+    const newFiltered = filtered.filter(item => {
+      const itemNetIncome = parseInt(item.netIncome, 10);
+      return itemNetIncome >= min && itemNetIncome <= max;
+    });
+  
+    setFilteredInfo(newFiltered);
+  };
+  
 
   // "Parent" Filter Function
   const applyFilters = () => {
@@ -199,7 +212,7 @@ function App() {
         <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
           <div>
             <label className='block text-md font-medium mb-1'>
-              Minimum Revenue:
+              Minimum Revenue (include zeroes):
               <input
                 className='bg-gray-200 border border-gray-300 p-2 rounded w-full'
                 type="revenue"
@@ -211,7 +224,7 @@ function App() {
           </div>
           <div>
             <label className='block text-md font-medium mb-1'>
-              Maximum Revenue:
+              Maximum Revenue (include zeroes):
               <input
                 className='bg-gray-200 border border-gray-300 p-2 rounded w-full'
                 type="revenue"
@@ -227,7 +240,7 @@ function App() {
         <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
           <div>
             <label className='block text-md font-medium mb-1'>
-              Minimum Net Income:
+              Minimum Net Income (include zeroes):
               <input
                 className='bg-gray-200 border border-gray-300 p-2 rounded w-full'
                 type="netIncome"
@@ -239,7 +252,7 @@ function App() {
           </div>
           <div>
             <label className='block text-md font-medium mb-1'>
-              Maximum Net Income:
+              Maximum Net Income (include zeroes):
               <input
                 className='bg-gray-200 border border-gray-300 p-2 rounded w-full'
                 type="netIncome"
