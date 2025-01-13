@@ -122,7 +122,7 @@ function App() {
   };
   
 
-  // "Parent" Filter Function
+  // "Parent" Filter Function (might benefit from method overloading)
   const applyFilters = () => {
     let filtered = [...filteredInfo];
     if (startDate && endDate) {
