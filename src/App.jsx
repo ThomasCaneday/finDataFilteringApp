@@ -44,22 +44,46 @@ function App() {
 
   // Filter Functions (Date, Revenue, Net Income)
   const filterDate = (filtered) => {
-    if (!startDate || !endDate) {
-      alert("Please enter both a start date and an end date.");
+    if (!startDate && !endDate) {
+      alert("Please enter at least a start date or an end date.");
       return;
     }
   
-    // Parse the start and end dates
-    const start = new Date(startDate);
-    const end = new Date(endDate);
+    // Parse start and end dates if provided
+    const start = startDate ? new Date(startDate) : null;
+    const end = endDate ? new Date(endDate) : null;
   
+    // Validate parsed dates
+    if ((startDate && isNaN(start.getTime())) || (endDate && isNaN(end.getTime()))) {
+      alert("Invalid start or end date. Please enter valid dates.");
+      return;
+    }
+  
+    // Apply the filter
     const newFiltered = filtered.filter(item => {
       const itemDate = new Date(item.date);
-      return itemDate >= start && itemDate <= end;
+  
+      // Ensure itemDate is a valid date
+      if (isNaN(itemDate.getTime())) {
+        console.warn(`Invalid date found in item: ${item.date}`);
+        return false;
+      }
+  
+      // Apply conditions based on provided dates
+      if (start && end) {
+        return itemDate >= start && itemDate <= end;
+      } else if (start) {
+        return itemDate >= start;
+      } else if (end) {
+        return itemDate <= end;
+      }
+  
+      // If neither start nor end is valid, include all (fallback, shouldn't hit this)
+      return true;
     });
   
     setFilteredInfo(newFiltered);
-  };
+  };    
   
 
   const filterRev = (filtered) => {
@@ -100,7 +124,7 @@ function App() {
 
   // "Parent" Filter Function
   const applyFilters = () => {
-    let filtered = [...info];
+    let filtered = [...filteredInfo];
     if (startDate && endDate) {
       filterDate(filtered);
     }
